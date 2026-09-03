@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Finalizar Pedido - Chopperia Gorde</title>
+
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+
+    <main class="checkout-page">
+
+        <div class="finalizar-container">
+
+            <!-- CABEÇALHO -->
+            <div class="checkout-header">
+
+                <div class="icone-carrinho">
+                    🛒
+                </div>
+
+                <div>
+                    <h1>Seu Carrinho</h1>
+
+                    <p>
+                        Confira seu pedido antes de finalizar
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- PRODUTOS -->
+            <section class="pedido-section">
+
+                <div class="section-title">
+                    <span>🛍️</span>
+
+                    <h2>Seu Pedido</h2>
+                </div>
+
+                <div id="lista">
+
+                    <!-- PRODUTOS SERÃO INSERIDOS PELO JS -->
+
+                </div>
+
+                <div
+                    id="carrinho-vazio"
+                    class="carrinho-vazio hidden"
+                >
+
+                    <div class="vazio-icone">
+                        🛒
+                    </div>
+
+                    <h3>Seu carrinho está vazio</h3>
+
+                    <p>
+                        Adicione alguns produtos para continuar.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn btn-dourado"
+                        onclick="window.location.href='index.html'"
+                    >
+                        ➕ Ver produtos
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- RESUMO -->
+            <section class="resumo">
+
+                <div class="resumo-linha">
+
+                    <span>Subtotal</span>
+
+                    <strong>
+                        R$ <span id="subtotal">0,00</span>
+                    </strong>
+
+                </div>
+
+
+                <div class="resumo-linha">
+
+                    <span>
+                        🚚 Taxa de entrega
+                    </span>
+
+                    <strong>
+                        R$ <span id="entrega">5,00</span>
+                    </strong>
+
+                </div>
+
+
+                <div class="linha-total"></div>
+
+
+                <div class="resumo-total">
+
+                    <span>Total</span>
+
+                    <strong>
+                        R$ <span id="total">0,00</span>
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- DIVISÓRIA -->
+            <div class="divisor"></div>
+
+
+            <!-- DADOS DO CLIENTE -->
+            <section class="cliente-section">
+
+                <div class="section-title">
+
+                    <span>📦</span>
+
+                    <div>
+                        <h2>Dados do Cliente</h2>
+
+                        <p>
+                            Informe seus dados para entrega
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- NOME -->
+                    <div class="campo">
+
+                        <label for="nome">
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                        >
+
+                    </div>
+
+
+                    <!-- TELEFONE -->
+                    <div class="campo">
+
+                        <label for="telefone">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            placeholder="(11) 99999-9999"
+                            autocomplete="tel"
+                        >
+
+                    </div>
+
+
+                    <!-- ENDEREÇO -->
+                    <div class="campo campo-completo">
+
+                        <label for="endereco">
+                            Endereço de entrega
+                        </label>
+
+                        <input
+                            type="text"
+                            id="endereco"
+                            placeholder="Rua, número, bairro..."
+                            autocomplete="street-address"
+                        >
+
+                    </div>
+
+
+                    <!-- PAGAMENTO -->
+                    <div class="campo campo-completo">
+
+                        <label for="pagamento">
+                            Forma de pagamento
+                        </label>
+
+                        <select id="pagamento">
+
+                            <option value="">
+                                Selecione uma forma de pagamento
+                            </option>
+
+                            <option value="Pix">
+                                💠 Pix
+                            </option>
+
+                            <option value="Cartão">
+                                💳 Cartão
+                            </option>
+
+                            <option value="Dinheiro">
+                                💵 Dinheiro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOTÕES -->
+            <section class="acoes">
+
+                <button
+                    type="button"
+                    class="btn btn-dourado"
+                    onclick="finalizar()"
+                >
+                    ✅ Enviar Pedido
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn btn-secundario"
+                    onclick="window.location.href='index.html'"
+                >
+                    ➕ Adicionar mais itens
+                </button>
+
+
+                <div class="acoes-secundarias">
+
+                    <button
+                        type="button"
+                        class="btn btn-voltar"
+                        onclick="voltar()"
+                    >
+                        ⬅️ Voltar
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-cancelar"
+                        onclick="cancelarPedido()"
+                    >
+                        ❌ Cancelar Pedido
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- RODAPÉ -->
+            <footer class="checkout-footer">
+
+                <strong>Chopperia Gorde</strong>
+
+                <span>
+                    Seu pedido com praticidade e segurança 🍻
+                </span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+    <script>
+            /* =====================================================
+            CONFIGURAÇÕES
+            ===================================================== */
+
+            const TAXA_ENTREGA = 5.00;
+
+            // WhatsApp da Chopperia Gorde
+            const WHATSAPP = "5511932286206";
+
+
+            /* =====================================================
+            FORMATAR DINHEIRO
+            ===================================================== */
+
+            function formatarPreco(valor) {
+
+                return Number(valor)
+                    .toFixed(2)
+                    .replace(".", ",");
+
+            }
+
+
+            /* =====================================================
+            PEGAR CESTA DO LOCALSTORAGE
+            ===================================================== */
+
+            function obterCesta() {
+
+                try {
+
+                    return JSON.parse(
+                        localStorage.getItem("cesta")
+                    ) || [];
+
+                } catch (erro) {
+
+                    console.error("Erro ao carregar cesta:", erro);
+
+                    return [];
+
+                }
+
+            }
+
+
+            /* =====================================================
+            MOSTRAR PRODUTOS NO FINALIZAR
+            ===================================================== */
+
+            function carregarPedido() {
+
+                const cesta = obterCesta();
+
+                const lista =
+                    document.getElementById("lista");
+
+                const carrinhoVazio =
+                    document.getElementById("carrinho-vazio");
+
+                const subtotalElemento =
+                    document.getElementById("subtotal");
+
+                const entregaElemento =
+                    document.getElementById("entrega");
+
+                const totalElemento =
+                    document.getElementById("total");
+
+
+                if (!lista) {
+                    return;
+                }
+
+
+                /* ================================================
+                CESTA VAZIA
+                ================================================= */
+
+                if (cesta.length === 0) {
+
+                    lista.innerHTML = "";
+
+                    if (carrinhoVazio) {
+                        carrinhoVazio.classList.remove("hidden");
+                    }
+
+                    subtotalElemento.textContent =
+                        "0,00";
+
+                    entregaElemento.textContent =
+                        "0,00";
+
+                    totalElemento.textContent =
+                        "0,00";
+
+                    return;
+                }
+
+
+                if (carrinhoVazio) {
+                    carrinhoVazio.classList.add("hidden");
+                }
+
+
+                lista.innerHTML = "";
+
+
+                let subtotal = 0;
+
+
+                /* ================================================
+                PRODUTOS
+                ================================================= */
+
+                cesta.forEach((produto, index) => {
+
+                    const preco =
+                        Number(produto.preco) || 0;
+
+                    const quantidade =
+                        Number(produto.quantidade) || 0;
+
+                    const valorProduto =
+                        preco * quantidade;
+
+                    subtotal += valorProduto;
+
+
+                    const item =
+                        document.createElement("div");
+
+                    item.className =
+                        "item-pedido";
+
+
+                    item.innerHTML = `
+
+                        <div class="produto-info">
+
+                            <strong>
+                                ${produto.nome}
+                            </strong>
+
+                            <span>
+                                R$ ${formatarPreco(preco)} cada
+                            </span>
+
+                        </div>
+
+
+                        <div class="produto-controles">
+
+                            <button
+                                type="button"
+                                onclick="diminuirItem(${index})">
+                                −
+                            </button>
+
+                            <strong>
+                                ${quantidade}
+                            </strong>
+
+                            <button
+                                type="button"
+                                onclick="aumentarItem(${index})">
+                                +
+                            </button>
+
+                        </div>
+
+
+                        <div class="produto-valor">
+
+                            R$ ${formatarPreco(valorProduto)}
+
+                        </div>
+
+                    `;
+
+
+                    lista.appendChild(item);
+
+                });
+
+
+                /* ================================================
+                TOTAL
+                ================================================= */
+
+                const total =
+                    subtotal + TAXA_ENTREGA;
+
+
+                subtotalElemento.textContent =
+                    formatarPreco(subtotal);
+
+                entregaElemento.textContent =
+                    formatarPreco(TAXA_ENTREGA);
+
+                totalElemento.textContent =
+                    formatarPreco(total);
+
+            }
+
+
+            /* =====================================================
+            AUMENTAR ITEM
+            ===================================================== */
+
+            function aumentarItem(index) {
+
+                const cesta = obterCesta();
+
+                if (!cesta[index]) {
+                    return;
+                }
+
+
+                cesta[index].quantidade++;
+
+
+                localStorage.setItem(
+                    "cesta",
+                    JSON.stringify(cesta)
+                );
+
+
+                carregarPedido();
+
+            }
+
+
+            /* =====================================================
+            DIMINUIR ITEM
+            ===================================================== */
+
+            function diminuirItem(index) {
+
+                const cesta = obterCesta();
+
+                if (!cesta[index]) {
+                    return;
+                }
+
+
+                cesta[index].quantidade--;
+
+
+                if (cesta[index].quantidade <= 0) {
+
+                    cesta.splice(index, 1);
+
+                }
+
+
+                localStorage.setItem(
+                    "cesta",
+                    JSON.stringify(cesta)
+                );
+
+
+                carregarPedido();
+
+            }
+
+
+            /* =====================================================
+            BOTÃO VOLTAR
+            ===================================================== */
+
+            function voltar() {
+
+                window.history.back();
+
+            }
+
+
+            /* =====================================================
+            CANCELAR PEDIDO
+            ===================================================== */
+
+            function cancelarPedido() {
+
+                const confirmar =
+                    confirm(
+                        "Tem certeza que deseja cancelar o pedido?"
+                    );
+
+
+                if (!confirmar) {
+                    return;
+                }
+
+
+                localStorage.removeItem("cesta");
+
+                localStorage.removeItem("ultimoPedido");
+
+
+                window.location.href =
+                    "index.html";
+
+            }
+
+
+            /* =====================================================
+            PAGAMENTO PIX
+            ===================================================== */
+
+            function verificarPagamento() {
+
+                const pagamento =
+                    document.getElementById("pagamento").value;
+
+                const pixBox =
+                    document.getElementById("pixBox");
+
+
+                if (!pixBox) {
+                    return;
+                }
+
+
+                if (pagamento === "Pix") {
+
+                    pixBox.classList.remove("hidden");
+
+                } else {
+
+                    pixBox.classList.add("hidden");
+
+                }
+
+            }
+
+
+            /* =====================================================
+            FINALIZAR PEDIDO
+            ===================================================== */
+
+            function finalizar() {
+
+                const nome =
+                    document
+                        .getElementById("nome")
+                        .value
+                        .trim();
+
+
+                const telefone =
+                    document
+                        .getElementById("telefone")
+                        .value
+                        .trim();
+
+
+                const endereco =
+                    document
+                        .getElementById("endereco")
+                        .value
+                        .trim();
+
+
+                const pagamento =
+                    document
+                        .getElementById("pagamento")
+                        .value;
+
+
+                /* ================================================
+                VALIDAÇÕES
+                ================================================= */
+
+                if (nome === "") {
+
+                    alert("Digite seu nome.");
+
+                    document
+                        .getElementById("nome")
+                        .focus();
+
+                    return;
+
+                }
+
+
+                if (telefone === "") {
+
+                    alert("Digite seu telefone.");
+
+                    document
+                        .getElementById("telefone")
+                        .focus();
+
+                    return;
+
+                }
+
+
+                if (endereco === "") {
+
+                    alert("Digite o endereço de entrega.");
+
+                    document
+                        .getElementById("endereco")
+                        .focus();
+
+                    return;
+
+                }
+
+
+                if (pagamento === "") {
+
+                    alert("Selecione a forma de pagamento.");
+
+                    document
+                        .getElementById("pagamento")
+                        .focus();
+
+                    return;
+
+                }
+
+
+                /* ================================================
+                CESTA
+                ================================================= */
+
+                const cesta =
+                    obterCesta();
+
+
+                if (cesta.length === 0) {
+
+                    alert(
+                        "Seu carrinho está vazio."
+                    );
+
+                    window.location.href =
+                        "index.html";
+
+                    return;
+
+                }
+
+
+                /* ================================================
+                CALCULAR VALORES
+                ================================================= */
+
+                let subtotal = 0;
+
+
+                cesta.forEach(produto => {
+
+                    subtotal +=
+                        Number(produto.preco) *
+                        Number(produto.quantidade);
+
+                });
+
+
+                const total =
+                    subtotal + TAXA_ENTREGA;
+
+
+                /* ================================================
+                MONTAR PEDIDO
+                ================================================= */
+
+                const pedido = {
+
+                    nome: nome,
+
+                    telefone: telefone,
+
+                    endereco: endereco,
+
+                    pagamento: pagamento,
+
+                    produtos: cesta,
+
+                    subtotal: subtotal,
+
+                    taxaEntrega: TAXA_ENTREGA,
+
+                    total: total,
+
+                    data:
+                        new Date()
+                            .toLocaleString("pt-BR")
+
+                };
+
+
+                /* ================================================
+                SALVAR ÚLTIMO PEDIDO
+                ================================================= */
+
+                localStorage.setItem(
+                    "ultimoPedido",
+                    JSON.stringify(pedido)
+                );
+
+
+                /* ================================================
+                MONTAR MENSAGEM WHATSAPP
+                ================================================= */
+
+                let mensagem = "";
+
+                mensagem +=
+                    "🍻 *CHOPPERIA GORDE*%0A";
+
+                mensagem +=
+                    "🛒 *NOVO PEDIDO*%0A";
+
+                mensagem +=
+                    "━━━━━━━━━━━━━━━━━━%0A%0A";
+
+
+                mensagem +=
+                    "👤 *DADOS DO CLIENTE*%0A";
+
+                mensagem +=
+                    "Nome: " +
+                    nome +
+                    "%0A";
+
+                mensagem +=
+                    "Telefone: " +
+                    telefone +
+                    "%0A%0A";
+
+
+                mensagem +=
+                    "📍 *ENDEREÇO DE ENTREGA*%0A";
+
+                mensagem +=
+                    endereco +
+                    "%0A%0A";
+
+
+                mensagem +=
+                    "🛍️ *PEDIDO*%0A";
+
+
+                cesta.forEach(produto => {
+
+                    const quantidade =
+                        Number(produto.quantidade);
+
+                    const preco =
+                        Number(produto.preco);
+
+                    const subtotalProduto =
+                        quantidade * preco;
+
+
+                    mensagem +=
+                        quantidade +
+                        "x " +
+                        produto.nome +
+                        " — R$ " +
+                        formatarPreco(subtotalProduto) +
+                        "%0A";
+
+                });
+
+
+                mensagem +=
+                    "%0A━━━━━━━━━━━━━━━━━━%0A";
+
+
+                mensagem +=
+                    "💰 Subtotal: R$ " +
+                    formatarPreco(subtotal) +
+                    "%0A";
+
+
+                mensagem +=
+                    "🚚 Entrega: R$ " +
+                    formatarPreco(TAXA_ENTREGA) +
+                    "%0A";
+
+
+                mensagem +=
+                    "💵 *TOTAL: R$ " +
+                    formatarPreco(total) +
+                    "*%0A%0A";
+
+
+                mensagem +=
+                    "💳 Forma de pagamento: *" +
+                    pagamento +
+                    "*%0A%0A";
+
+
+                if (pagamento === "Pix") {
+
+                    mensagem +=
+                        "💠 Cliente realizará o pagamento via Pix.%0A";
+
+                }
+
+
+                mensagem +=
+                    "%0A🔔 *Aguardando confirmação do pedido.*";
+
+
+                /* ================================================
+                ABRIR WHATSAPP
+                ================================================= */
+
+                const url =
+                    "https://wa.me/" +
+                    WHATSAPP +
+                    "?text=" +
+                    mensagem;
+
+
+                window.open(
+                    url,
+                    "_blank"
+                );
+
+
+                /* ================================================
+                LIMPAR CARRINHO
+                ================================================= */
+
+                localStorage.removeItem("cesta");
+
+            }
+
+
+            /* =====================================================
+            INICIALIZAÇÃO
+            ===================================================== */
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function () {
+
+                    carregarPedido();
+
+
+                    const pagamento =
+                        document.getElementById("pagamento");
+
+
+                    if (pagamento) {
+
+                        pagamento.addEventListener(
+                            "change",
+                            verificarPagamento
+                        );
+
+                    }
+
+                }
+            );
+    </script>
+
+    <div id="pixBox" class="pix-box hidden">
+
+    <h3>💠 Pagamento via Pix</h3>
+
+    <p>
+        Escaneie o QR Code abaixo para realizar o pagamento.
+    </p>
+
+    <div id="qrcode"></div>
+
+    <p>
+        <strong>Chave Pix:</strong>
+        <span id="chavePix">AGUARDANDO CNPJ</span>
+    </p>
+
+    <p>
+        Após realizar o pagamento, envie o comprovante pelo WhatsApp.
+    </p>
+
+</div>
+
+    </script>
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

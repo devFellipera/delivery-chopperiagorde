@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <title>Delivery - Chopperia Gorde</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+
+    <!-- CARRINHO FLUTUANTE -->
+        <div 
+            id="carrinhoFloat" 
+            class="carrinho-float hidden" 
+            onclick="abrirMiniCarrinho()">
+            🛒 <span id="qtd-carrinho">0</span>
+        </div>
+        <!-- MINI CARRINHO -->
+        <div id="miniCarrinho" class="mini-carrinho hidden">
+            <h3>Seu Pedido</h3>
+            <div id="miniLista"></div>
+            <button onclick="irFinalizar()">
+            Finalizar Pedido
+            </button>
+        </div>
+        
+    <!--===== topo =====-->
+        <div class="topo">
+            <div class="banner">
+                <img src="fotos/banner.jpg">
+            </div>
+
+        <div class ="info-loja">
+            <h2>Delivery - Chopperia Gorde</h2>
+            <p>🕒 Terça a Quinta das 14:00 - 22:00 </p>
+            <p>🕒 Sexta, Sábado, Domingo e feriados das 14:00 - 02:00 </p>
+            <span id="statusLoja" class="status">---</span>
+            </div>
+        </div>
+            <!-- ICONES -->
+            <div class="icones">
+
+            <div onclick="toggle('pagamentoBox')">
+                💳
+                <p>Pagamentos</p>
+            </div>
+
+            <div>
+                ⏱️
+                <p>25-45min</p>
+            </div>
+
+            <div onclick="toggle('infoBox')">
+                ℹ️
+                <p>Info</p>
+            </div>
+
+            </div>
+
+            <!-- BOX PAGAMENTO -->
+            <div id="pagamentoBox" class="box hidden">
+            <p>✔ Pix</p>
+            <p>✔ Cartão</p>
+            <p>✔ Dinheiro</p>
+            </div>
+
+            <!-- BOX INFO -->
+            <div id="infoBox" class="box hidden">
+            <p>🚴‍♀️ Entregas somente na região da Brasilandia e bairros proximos</p>
+            <p>📍 Endereço loja fisica: Rua Daniel cerri, 1049 - Jd Paraná sp </p>
+            <p>📞 Contato: (11) 932286206</p>
+            <p>📱 Siga-nos: @ChopperiadoGorde</p>
+            
+            </div>
+
+            <!-- slides  -->
+
+            <div class="slider">
+                <div class="slide active">
+                    <img src="fotos/banner.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/black.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/gold.png">
+                </div>
+                <div class="slide">
+                    <img src="fotos/combo_gold.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/kit-cuia.png">
+                </div>
+                <div class="slide">
+                    <img src="fotos/mansao.png">
+                </div>
+                <div class="slide">
+                    <img src="fotos/royal.webp">
+                </div>
+                <div class="slide">
+                    <img src="fotos/tanq.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/rocks.jpg">
+                </div>
+            </div>
+
+        <!-- ============================= -->
+        <h2>Doses</h2>
+        <!-- ============================= -->
+
+            <div class="produto">
+                <img src="fotos/eternit.jpg">
+                <h3>Dose Eternit c/vibe - R$20,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Eternit', 20.00, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/doseblack.jpg">
+                <h3>Dose Black Label - R$45,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Black Label', 45.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/dosetanq.jpg">
+                <h3>Dose Tanqueray - R$45,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Tanqueray', 45.00, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/dosetanqr.jpg">
+                <h3>Dose Tanqueray Royale - R$45,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Tanqueray Royale', 45.00, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/dosered.jpg">
+                <h3>Dose Red Label c/Redbull - R$30,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Dose Red Label c/Redbull', 30.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/dosered.jpg">
+                <h3>Dose Red Label c/vibe - R$25,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Dose Red Label c/vibe', 25.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/dosecavalo.jpg">
+                <h3> Dose Cavalo c/redbull  - R$25,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Dose Cavalo c/redbull', 25.00, this)">
+                +
+                </button>        
+            </div>
+
+            <div class="produto">
+                <img src="fotos/dosegin.jpg">
+                <h3>Dose gin Beefeter  - R$35,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Gin Beefeter', 35.00, this)">
+                +
+                </button>
+            </div>
+
+        <!-- ============================= -->
+        <h2>Combos Premium</h2>
+        <!-- ============================= -->
+
+            <div class="produto">
+                <img src="fotos/black.jpg">
+                <h3>Combo Black Label - R$220,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Black Label', 220.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/tanq.jpg">
+                <h3>Combo Tanqueray - R$165,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Tanqueray', 165.00, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/tanqr.jpg">
+                <h3>Combo Tanqueray Royale - R$174,99</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Tanqueray Royale', 174.99, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/combo_gold.jpg">
+                <h3>Combo Gold Label - R$289,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Combo Gold Label', 289.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/jack.jpg">
+                <h3>combo Jack Daniels - R$200,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Jack Daniels', 200.00, this)">
+                +
+                </button>
+            </div>
+
+        <!-- ============================= -->
+        <h2>🥤Sucos, Refrigerantes & Outros</h2>
+        <!-- ============================= -->
+
+        <div class="produto">
+            <img src="fotos/agua 500ml sgas.jpeg">
+            <h3>Água s/gas 500ml - R$5,00</h3>
+            <button 
+                class="btn-add"
+                onclick="adicionarCesta(event, 'Água s/gas', 5.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/coca cola 350ml.jpeg">
+            <h3>Coca-Cola 350ml - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Coca-Cola 350ml', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/coquinha.png">
+            <h3>Coquinha 200ml  - R$4,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Coquinha', 4.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle Uva  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Suco Del Valle uva', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle Goiaba  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, ' Del Valle goiaba', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle maracuja  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, ' Del Valle maracuja', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle Pessego  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'del valle pessego', 8.00, this)">
+                +
+            </button>
+        </div>
+
+
+
+
+        <script src="script.js"></script>
+        <footer class="footer">
+            <p>© 2026 Chopperia Gorde - Todos os direitos reservados</p>
+            <p>Desenvolvido por: <strong> @ofelipeee__ </strong></p>
+        </footer>
+    
+    </body>
+</html>

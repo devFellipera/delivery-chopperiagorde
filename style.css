@@ -1,0 +1,600 @@
+/* ================= RESET ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #171717;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ================= CORES ================= */
+
+:root {
+    --dourado: #c89b3c;
+    --dourado-claro: #e2c16d;
+    --dourado-escuro: #9b7222;
+    --preto: #171717;
+    --cinza: #f5f5f5;
+    --cinza-borda: #e5e5e5;
+    --branco: #ffffff;
+}
+
+
+/* ================= TITULOS ================= */
+
+h1,
+h2,
+h3 {
+    color: var(--preto);
+}
+
+h2 {
+    position: relative;
+    padding-bottom: 8px;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: var(--dourado);
+    margin-top: 7px;
+    border-radius: 5px;
+}
+
+
+/* ================= TOPO ================= */
+
+.topo {
+    background: #ffffff;
+    padding-bottom: 35px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--dourado-claro);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================= BANNER ================= */
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.banner img {
+    width: auto;
+    max-width: 95%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+
+/* ================= INFO LOJA ================= */
+
+.info-loja {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.info-loja h2 {
+    margin: 5px 0;
+}
+
+.info-loja h2::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.status {
+    color: #198754;
+    font-weight: bold;
+}
+
+
+/* ================= ICONES ================= */
+
+.icones {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.icones div {
+    color: var(--preto);
+    cursor: pointer;
+}
+
+
+/* ================= BOX INFO ================= */
+
+.box {
+    background: #ffffff;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--dourado-claro);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================= ESCONDIDO ================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ================= SLIDER ================= */
+
+.slider {
+    width: 92%;
+    max-width: 1200px;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--dourado-claro);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
+    background: #111;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* ================= PRODUTOS ================= */
+
+.produto {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--cinza-borda);
+    transition: 0.25s;
+}
+
+.produto:hover {
+    border-color: var(--dourado);
+    box-shadow: 0 4px 12px rgba(200, 155, 60, 0.15);
+}
+
+.produto img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.produto h3 {
+    margin: 0;
+    flex: 1;
+}
+
+
+/* ================= BOTÕES ================= */
+
+button {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-add {
+    background: var(--dourado);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    transition: 0.25s;
+}
+
+.btn-add:hover {
+    background: var(--dourado-escuro);
+    transform: scale(1.08);
+}
+
+
+/* ================= CARRINHO FLUTUANTE ================= */
+
+.carrinho-float {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    background: var(--preto);
+    color: #ffffff;
+
+    padding: 13px 20px;
+
+    border-radius: 50px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: 2px solid var(--dourado);
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    transition: 0.3s;
+}
+
+.carrinho-float:hover {
+    background: var(--dourado);
+    transform: scale(1.05);
+}
+
+
+/* ================= FUNDO DO POP-UP ================= */
+
+.overlay-carrinho {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 2000;
+}
+
+
+/* ================= POP-UP ================= */
+
+.mini-carrinho {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 90%;
+    max-width: 520px;
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    border: 2px solid var(--dourado);
+
+    z-index: 2001;
+}
+
+
+/* ================= CABEÇALHO ================= */
+
+.mini-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid var(--cinza-borda);
+
+    padding-bottom: 12px;
+
+    margin-bottom: 15px;
+}
+
+.mini-header h3 {
+    margin: 0;
+}
+
+
+/* ================= BOTÃO FECHAR ================= */
+
+.btn-fechar {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--preto);
+
+    color: #ffffff;
+
+    font-size: 20px;
+}
+
+.btn-fechar:hover {
+    background: var(--dourado);
+}
+
+
+/* ================= ITEM ================= */
+
+.mini-item {
+    border: 1px solid var(--cinza-borda);
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    background: #ffffff;
+}
+
+
+/* ================= PRODUTO MINI ================= */
+
+.mini-produto {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= CONTROLES ================= */
+
+.mini-controles {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+}
+
+.mini-controles button {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--dourado);
+
+    background: var(--preto);
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+.mini-controles button:hover {
+    background: var(--dourado);
+}
+
+.mini-controles span {
+    min-width: 25px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+
+/* ================= REMOVER ================= */
+
+.mini-controles .btn-remover {
+    margin-left: auto;
+
+    background: #ffffff;
+
+    color: #b00020;
+
+    border-color: #b00020;
+}
+
+.mini-controles .btn-remover:hover {
+    background: #b00020;
+
+    color: #ffffff;
+}
+
+
+/* ================= SUBTOTAL ================= */
+
+.mini-subtotal {
+    text-align: right;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+/* ================= TOTAL ================= */
+
+.mini-total {
+    border-top: 2px solid var(--dourado);
+
+    margin-top: 15px;
+
+    padding-top: 15px;
+
+    text-align: right;
+
+    font-size: 20px;
+}
+
+
+/* ================= AÇÕES ================= */
+
+.mini-acoes {
+    margin-top: 20px;
+}
+
+.mini-acoes button {
+    width: 100%;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= ADICIONAR MAIS ================= */
+
+.btn-adicionar {
+    background: #ffffff;
+
+    color: var(--preto);
+
+    border: 1px solid var(--dourado);
+}
+
+.btn-adicionar:hover {
+    background: #fff8e8;
+}
+
+
+/* ================= FINALIZAR ================= */
+
+.btn-finalizar {
+    background: var(--preto);
+
+    color: #ffffff;
+
+    border: 1px solid var(--dourado);
+}
+
+.btn-finalizar:hover {
+    background: var(--dourado);
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer {
+    margin-top: 40px;
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #666;
+
+    background: #fafafa;
+
+    border-top: 2px solid var(--dourado);
+}
+
+.footer strong {
+    color: var(--dourado-escuro);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .banner img {
+        max-width: 90%;
+        height: 130px;
+    }
+
+    .slider {
+        width: 94%;
+        height: 160px;
+    }
+
+    .produto {
+        margin: 12px;
+    }
+
+    .produto img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .carrinho-float {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .mini-carrinho {
+        width: 94%;
+
+        max-height: 88vh;
+
+        padding: 15px;
+    }
+
+}
+
+/* ================= STATUS DA LOJA ================= */
+
+.status {
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.status.aberto {
+  color: #198754;
+}
+
+.status.fechado {
+  color: #dc3545;
+}
