@@ -129,7 +129,7 @@
 
 
             <!-- DADOS DO CLIENTE -->
-            <section class="cliente-section">
+        <section class="cliente-section">
 
                 <div class="section-title">
 
@@ -229,21 +229,20 @@
                     </div>
 
                 </div>
-                <div class="campo campo-completo">
 
+                <div class="campo campo-completo">
                 <label for="observacao">
                     📝 Observação do pedido
                 </label>
-
                 <textarea
                     id="observacao"
                     rows="4"
-                    placeholder="Ex.: SABOR DO ENERGETICO/ mandar copos extras, entregar na portaria, tocar a campainha..."
+                    placeholder="Ex.: SABOR DO ENERGETICO/ mandar copos extras,
+                    entregar na portaria, tocar a campainha..."
                 ></textarea>
-
             </div>
 
-            </section>
+        </section>
 
 
             <!-- BOTÕES -->
@@ -732,6 +731,30 @@
 
                 }
 
+                if (observacao === "") {
+
+                    alert("Digite a observação do pedido.");
+
+                    document
+                        .getElementById("observacao")
+                        .focus();
+
+                    return;
+
+                }
+
+                if (endereco === "") {
+
+                    alert("Digite o endereço de entrega.");
+
+                    document
+                        .getElementById("endereco")
+                        .focus();
+
+                    return;
+
+                }
+
 
                 /* ================================================
                 CESTA
@@ -911,6 +934,15 @@
 
                     mensagem +=
                         "💠 Cliente realizará o pagamento via Pix.%0A";
+
+                }
+
+                if (observacao) {
+
+                    mensagem +=
+                        "📝 Observação: " +
+                        observacao +
+                        "%0A%0A";
 
                 }
 
