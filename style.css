@@ -551,17 +551,17 @@ button {
 @media (max-width: 600px) {
 
     .banner img {
-        max-width: 90%;
-        height: 130px;
+        max-width: 100%;
+        height: auto;
     }
 
     .slider {
-        width: 94%;
-        height: 160px;
+        width: 100%;
+        height: auto;
     }
 
     .produto {
-        margin: 12px;
+        margin: 6px;
     }
 
     .produto img {
@@ -579,7 +579,7 @@ button {
 
         max-height: 88vh;
 
-        padding: 15px;
+        padding: 10px;
     }
 
 }
