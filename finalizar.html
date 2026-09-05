@@ -928,6 +928,11 @@
                     "💳 Forma de pagamento: *" +
                     pagamento +
                     "*%0A%0A";
+                
+                mensagem +=
+                    "📝 Observação: " +
+                    observacao +
+                    "%0A%0A";
 
 
                 if (pagamento === "Pix") {
@@ -936,17 +941,6 @@
                         "💠 Cliente realizará o pagamento via Pix.%0A";
 
                 }
-
-                if (observacao) {
-
-                    mensagem +=
-                        "📝 Observação: " +
-                        observacao +
-                        "%0A%0A";
-
-                }
-
-
                 mensagem +=
                     "%0A🔔 *Aguardando confirmação do pedido.*";
 
@@ -975,8 +969,6 @@
                 localStorage.removeItem("cesta");
 
             }
-
-
             /* =====================================================
             INICIALIZAÇÃO
             ===================================================== */
