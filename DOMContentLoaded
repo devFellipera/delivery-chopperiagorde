@@ -1,0 +1,14 @@
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        atualizarBotoes();
+
+        atualizarCarrinho();
+
+        atualizarMiniCarrinho();
+
+        atualizarStatusLoja();
+
+    }
+);

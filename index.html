@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <title>Delivery - Chopperia Gorde</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+
+    <!-- CARRINHO FLUTUANTE -->
+        <div 
+            id="carrinhoFloat" 
+            class="carrinho-float hidden" 
+            onclick="abrirMiniCarrinho()">
+            🛒 <span id="qtd-carrinho">0</span>
+        </div>
+        <!-- MINI CARRINHO -->
+    
+        <div id="miniCarrinho" class="mini-carrinho hidden">
+            <h3>Seu Pedido</h3>
+
+            <div id="miniLista"></div>
+
+            <button onclick="irFinalizar()">
+            Finalizar Pedido
+
+            </button>
+        </div>
+        
+    <!--===== topo =====-->
+        <div class="topo">
+            <div class="banner">
+                <img src="fotos/banner.jpg">
+            </div>
+
+        <div class ="info-loja">
+            <h2>Delivery - Chopperia Gorde</h2>
+            <p>🕒 Terça a Quinta das 14:00 - 22:00 </p>
+            <p>🕒 Sexta, Sábado, Domingo e feriados das 14:00 - 02:00 </p>
+            <span id="statusLoja" class="status">---</span>
+            </div>
+        </div>
+            <!-- ICONES -->
+            <div class="icones">
+
+            <div onclick="toggle('pagamentoBox')">
+                💳
+                <p>Pagamentos</p>
+            </div>
+
+            <div>
+                ⏱️
+                <p>25-45min</p>
+            </div>
+
+            <div onclick="toggle('infoBox')">
+                ℹ️
+                <p>Info</p>
+            </div>
+
+            </div>
+
+            <!-- BOX PAGAMENTO -->
+            <div id="pagamentoBox" class="box hidden">
+            <p>✔ Pix</p>
+            <p>✔ Cartão</p>
+            <p>✔ Dinheiro</p>
+            </div>
+
+            <!-- BOX INFO -->
+            <div id="infoBox" class="box hidden">
+            <p>🚴‍♀️ Entregas somente na região da Brasilandia e bairros proximos</p>
+            <p>📍 Endereço loja fisica: Rua Daniel cerri, 1049 - Jd Paraná sp </p>
+            <p>📞 Contato: (11) 93219-5719</p>
+            <p>📱 Siga-nos: @ChopperiadoGorde</p>
+            
+            </div>
+
+            <!-- slides  -->
+
+            <div class="slider">
+                <div class="slide active">
+                    <img src="fotos/banner.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/black.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/gold.png">
+                </div>
+                <div class="slide">
+                    <img src="fotos/combo_gold.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/kit-cuia.png">
+                </div>
+                <div class="slide">
+                    <img src="fotos/mansao.png">
+                </div>
+                <div class="slide">
+                    <img src="fotos/royal.webp">
+                </div>
+                <div class="slide">
+                    <img src="fotos/tanq.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/rocks.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/doseternit.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/dosered.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/dosetanq.jpg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/agua 500ml sgas.jpeg">
+                </div>
+                <div class="slide">
+                    <img src="fotos/coca cola 350ml.jpeg">
+                </div>
+        </div>
+
+
+        <!-- ============================= -->
+        <h2>Doses</h2>
+
+        <!-- DOSE ETERNIT -->
+        <div class="produto">
+            <img src="fotos/doseternit.jpg">
+
+            <div class="produto-info">
+                <h3>Dose Eternit c/Baly - R$10,00</h3>
+                <p class="descricao">
+                    Dose de Eternit acompanhada de energético Baly. Escolha seu sabor.
+                </p>
+            </div>
+
+            <button
+                class="btn-add"
+                onclick="selecionarSaborEternit(event, this)">
+                +
+            </button>
+        </div>
+
+            
+
+        <!-- DOSE TANQUERAY - OS 3 TIPOS EM UM SÓ PRODUTO -->
+        <div class="produto">
+            <img src="fotos/dosetanq.jpg">
+
+            <div class="produto-info">
+                <h3>Dose Tanqueray - R$45,00</h3>
+                <p class="descricao">
+                    Escolha o sabor do Tanqueray e o energético.
+                </p>
+            </div>
+
+            <button
+                class="btn-add"
+                onclick="escolherGin(event, 'Dose Tanqueray', 45.00, this)">
+                +
+            </button>
+        </div>
+
+
+        <!-- DOSE BEEFEATER - GIN -->
+        <div class="produto">
+            <img src="fotos/beefeater.jpg">
+
+            <div class="produto-info">
+                <h3>Dose Beefeater - R$35,00</h3>
+                <p class="descricao">
+                    Dose de gin Beefeater. Escolha o energético.
+                </p>
+            </div>
+
+            <button
+                class="btn-add"
+                onclick="escolherEnergeticoGin(event, 'Dose Beefeater', 35.00, this)">
+                +
+            </button>
+        </div>
+
+                <!-- DOSE gin rocks -->
+        <div class="produto">
+            <img src="fotos/rocks.jpg">
+            <h3>Dose Gin Rocks c/baly - R$13,00</h3>
+
+
+            <button
+                class="btn-add"
+                onclick="adicionarCesta(event, 'Dose Gin Rocks c/baly', 13.00, this)">
+                +
+            </button>
+        </div>
+
+        <!-- DOSE BLACK LABEL -->
+        <div class="produto">
+            <img src="fotos/doseblack.jpg">
+            <h3>Dose Black Label c/RedBull - R$45,00</h3>
+
+            <button
+                class="btn-add"
+                onclick="adicionarCesta(event, 'Dose Black Label c/RedBull', 45.00, this)">
+                +
+            </button>
+        </div>
+
+        <!-- DOSE RED LABEL -->
+        <div class="produto">
+            <img src="fotos/dosered.jpg">
+            <h3>Dose Red Label c/Redbull - R$30,00</h3>
+
+            <button
+                class="btn-add"
+                onclick="adicionarCesta(event, 'Dose Red Label c/Redbull', 30.00, this)">
+                +
+            </button>
+        </div>
+
+        <!-- DOSE CAVALO -->
+        <div class="produto">
+            <img src="fotos/dosecavalo.jpg">
+            <h3>Dose Cavalo c/redbull - R$25,00</h3>
+
+            <button
+                class="btn-add"
+                onclick="adicionarCesta(event, 'Dose Cavalo c/redbull', 25.00, this)">
+                +
+            </button>
+        </div>
+
+
+
+        <!-- ============================= -->
+        <h2>Combos Premium</h2>
+        <!-- ============================= -->
+
+            <div class="produto">
+                <img src="fotos/black.jpg">
+                <h3>Combo Black Label - R$200,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Combo Black Label', 200.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/tanq.jpg">
+                <h3>Combo Tanqueray - R$165,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Combo Tanqueray', 165.00, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/tanqr.jpg">
+                <h3>Combo Tanqueray Royale - R$174,99</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Combo Tanqueray Royale', 174.99, this)">
+                +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/combo_gold.jpg">
+                <h3>Combo Gold Label - R$289,00</h3>
+                <button 
+                    class="btn-add" 
+                    onclick="adicionarCesta(event, 'Combo Gold Label', 289.00, this)">
+                    +
+                </button>
+            </div>
+
+            <div class="produto">
+                <img src="fotos/jack.jpg">
+                <h3>Combo Jack Daniels - R$200,00</h3>
+                <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Combo Jack Daniels', 200.00, this)">
+                +
+                </button>
+            </div>
+
+        <!-- ============================= -->
+        <h2>🥤Sucos, Refrigerantes & Outros</h2>
+        <!-- ============================= -->
+
+        <div class="produto">
+            <img src="fotos/agua 500ml sgas.jpeg">
+            <h3>Água s/gas 500ml - R$5,00</h3>
+            <button 
+                class="btn-add"
+                onclick="adicionarCesta(event, 'Água s/gas', 5.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/coca cola 350ml.jpeg">
+            <h3>Coca-Cola 350ml - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Coca-Cola 350ml', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/coquinha.png">
+            <h3>Coquinha 200ml  - R$4,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Coquinha', 4.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle Uva  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'Suco Del Valle uva', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle Goiaba  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, ' Del Valle goiaba', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle maracuja  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, ' Del Valle maracuja', 8.00, this)">
+                +
+            </button>
+        </div>
+
+        <div class="produto">
+            <img src="fotos/delvalle.png">
+            <h3>Suco Del Valle Pessego  - R$8,00</h3>
+            <button 
+                class="btn-add" 
+                onclick="adicionarCesta(event, 'del valle pessego', 8.00, this)">
+                +
+            </button>
+        </div>
+
+
+
+
+        <script>
+        // Escolha usada SOMENTE nas doses de gin.
+        function escolherGin(event, nome, preco, botao) {
+            event.stopPropagation();
+
+            const sabores = [
+                "Tanqueray Verde",
+                "Tanqueray Bossa Nova",
+                "Tanqueray Royale"
+            ];
+
+            const escolhaSabor = prompt(
+                "Escolha o sabor do Tanqueray:\n\n" +
+                "1 - Tanqueray Verde\n" +
+                "2 - Tanqueray Bossa Nova\n" +
+                "3 - Tanqueray Royale"
+            );
+
+            if (escolhaSabor === null) return;
+
+            const numeroSabor = parseInt(escolhaSabor);
+
+            if (isNaN(numeroSabor) || numeroSabor < 1 || numeroSabor > sabores.length) {
+                alert("Escolha um sabor válido.");
+                return;
+            }
+
+            const sabor = sabores[numeroSabor - 1];
+
+            const escolhaEnergetico = prompt(
+                "Escolha o energético:\n\n" +
+                "1 - Baly\n" +
+                "2 - Red Bull\n" +
+                "3 - Monster"
+            );
+
+            if (escolhaEnergetico === null) return;
+
+            const numeroEnergetico = parseInt(escolhaEnergetico);
+            const energeticos = ["Baly", "Red Bull", "Monster"];
+
+            if (
+                isNaN(numeroEnergetico) ||
+                numeroEnergetico < 1 ||
+                numeroEnergetico > energeticos.length
+            ) {
+                alert("Escolha um energético válido.");
+                return;
+            }
+
+            const energetico = energeticos[numeroEnergetico - 1];
+
+            adicionarCesta(
+                event,
+                `${nome} - ${sabor} + ${energetico}`,
+                preco,
+                botao
+            );
+        }
+
+        // Beefeater é gin, então permite escolher apenas o energético.
+        function escolherEnergeticoGin(event, nome, preco, botao) {
+            event.stopPropagation();
+
+            const escolha = prompt(
+                "Escolha o energético:\n\n" +
+                "1 - Red Bull cereja\n" +
+                "2 - Red Bull morango c/pessego\n" +
+                "3 - Red Bull melancia\n" +
+                "4 - Red Bull tropical\n" +
+                "5 - Red Bull zero acucar\n" +
+                "6 - Monster"
+            );
+
+            if (escolha === null) return;
+
+            const numero = parseInt(escolha);
+            const energeticos = ["Red Bull cereja", "Red Bull morango c/pessego", "Red Bull melancia",
+            "Red Bull tropical", "Red Bull zero acucar", "Monster"];
+
+            if (isNaN(numero) || numero < 1 || numero > energeticos.length) {
+                alert("Escolha um energético válido.");
+                return;
+            }
+
+            const energetico = energeticos[numero - 1];
+
+            adicionarCesta(
+                event,
+                `${nome} + ${energetico}`,
+                preco,
+                botao
+            );
+        }
+        </script>
+
+        <script src="script.js"></script>
+        <footer class="footer">
+            <p>© 2026 Chopperia Gorde - Todos os direitos reservados</p>
+            <p>Desenvolvido por: <strong> @ofelipeee__ </strong></p>
+            <a href="politica-privacidade.html" 
+            style="color: #ebac4d; text-decoration: none;">
+                Política de Privacidade</a>
+        </footer>
+    
+    </body>
+</html>
